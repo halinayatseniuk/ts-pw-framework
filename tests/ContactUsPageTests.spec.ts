@@ -21,7 +21,6 @@ test('Wprowadzamy wszystkie dane i sprawdzamy komunikat', async () => {
     await contactPage.emailField.fill(faker.internet.email());
     await contactPage.commentsField.fill(faker.string.alphanumeric(20));
     await contactPage.submitButton.click();
-
     await expect(contactPage.successLogin).toBeVisible();
 });
 
