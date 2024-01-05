@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { ContactUsPage } from './dto/ContactUsPage';
-import { MyCoursesPage } from './dto/MyCoursesPage';
+import { ContactUsPage } from './dtos/ContactUsPage';
+import { MyCoursesPage } from './dtos/MyCoursesPage';
 
 import { faker } from '@faker-js/faker';
 

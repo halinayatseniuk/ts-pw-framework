@@ -5,10 +5,6 @@ export class ContactUsPage {
 
     constructor(private page: Page) {}
 
-    public get pageTitle() {
-        return this.page.locator("input[placeholder='First Name']");
-    }
-
     // using placeholder attribute (playwright method)
     public get firstNameField() {
         return this.page.getByPlaceholder("First Name");
@@ -17,7 +13,6 @@ export class ContactUsPage {
     // using any attribute (playwright method)
     public get lastNameField() {
         return this.page.getByRole('textbox', { name: "Last name"});
-
     }
 
     // using any attribute type
