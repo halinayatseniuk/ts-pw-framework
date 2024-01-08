@@ -41,12 +41,12 @@ test('Zaznaczamy wszystkie checkboxy a następnie odznaczamy 2 i 4 - sprawdzamy 
 });
 
 test('Klikamy wszystkie Radio buttony po każdym kliknięciu sprawdzamy czy zaznaczył się ten który chcieliśmy', async () => {
-  await dropdownsPage.greenRadioButton.click();
+  await dropdownsPage.greenRadioButton.check();
 
   await expect(dropdownsPage.greenRadioButton).toBeChecked();
   await expect(dropdownsPage.blueRadioButton).toBeChecked({checked: false});
 
-  await dropdownsPage.blueRadioButton.click();
+  await dropdownsPage.blueRadioButton.check();
 
   await expect(dropdownsPage.greenRadioButton).toBeChecked({checked: false});
   await expect(dropdownsPage.blueRadioButton).toBeChecked();
