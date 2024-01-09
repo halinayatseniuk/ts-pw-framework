@@ -1,9 +1,9 @@
-import { Page } from "@playwright/test";
-import { expect } from '@playwright/test';
+import { Page , expect } from "@playwright/test";
 import { ContactUsPage } from './ContactUsPage';
 import { DropdownsPage } from './DropdownsPage';
 import { AutocompletePage } from './AutocompletePage';
 import { DatepickerPage } from './DatepickerPage';
+import { LoaderPage } from './LoaderPage';
 
 export class MyCoursesPage {
 
@@ -23,6 +23,10 @@ export class MyCoursesPage {
 
     public get datepickerOption() {
         return this.page.locator("#datepicker");
+    }
+
+    public get loaderOption() {
+        return this.page.locator("#ajax-loader");
     }
 
     public autocompletePageTitle(page: Page) {
@@ -66,6 +70,16 @@ export class MyCoursesPage {
         await newPage.waitForLoadState();
         await expect(newPage).toHaveTitle("WebDriver | Datepicker");
         return new DatepickerPage(newPage);
+    }
+
+    public async openLoaderPage() {
+        const [newPage] = await Promise.all([
+            this.page.context().waitForEvent('page'),
+            this.loaderOption.click()
+        ]);
+        await newPage.waitForLoadState();
+        await expect(newPage).toHaveTitle("WebDriver | Ajax-Loader");
+        return new LoaderPage(newPage);
     }
 
     public async openMyCoursesPage() {
