@@ -7,7 +7,7 @@ let autocompletePage: AutocompletePage;
 
 test.beforeEach(async ({ page }) => {
     myCoursesPage = new MyCoursesPage(page);
-    myCoursesPage.openMyCoursesPage();
+    await myCoursesPage.openMyCoursesPage();
     autocompletePage = await myCoursesPage.openAutocompletePage();
   });
 

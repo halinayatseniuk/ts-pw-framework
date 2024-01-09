@@ -7,7 +7,7 @@ let dropdownsPage: DropdownsPage;
 
 test.beforeEach(async ({ page }) => {
   myCoursesPage = new MyCoursesPage(page);
-  myCoursesPage.openMyCoursesPage();
+  await myCoursesPage.openMyCoursesPage();
   dropdownsPage = await myCoursesPage.openDropdownsPage();
 });
 

@@ -11,7 +11,7 @@ const invalidEmailValueMessage = "Error: Invalid email address";
 
 test.beforeEach(async ({ page }) => {
     myCoursesPage = new MyCoursesPage(page);
-    myCoursesPage.openMyCoursesPage();
+    await myCoursesPage.openMyCoursesPage();
     contactPage = await myCoursesPage.openContactUsPage();
   });
 

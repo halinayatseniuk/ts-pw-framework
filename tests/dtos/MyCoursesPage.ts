@@ -3,6 +3,7 @@ import { expect } from '@playwright/test';
 import { ContactUsPage } from './ContactUsPage';
 import { DropdownsPage } from './DropdownsPage';
 import { AutocompletePage } from './AutocompletePage';
+import { DatepickerPage } from './DatepickerPage';
 
 export class MyCoursesPage {
 
@@ -18,6 +19,10 @@ export class MyCoursesPage {
 
     public get autocompleteOption() {
         return this.page.locator("#autocomplete-textfield");
+    }
+
+    public get datepickerOption() {
+        return this.page.locator("#datepicker");
     }
 
     public autocompletePageTitle(page: Page) {
@@ -51,6 +56,16 @@ export class MyCoursesPage {
         await newPage.waitForLoadState();
         await expect(newPage.locator("h2:has-text('Autocomplete TextField')")).toBeVisible();
         return new AutocompletePage(newPage);
+    }
+
+    public async openDatepickerPage() {
+        const [newPage] = await Promise.all([
+            this.page.context().waitForEvent('page'),
+            this.datepickerOption.click()
+        ]);
+        await newPage.waitForLoadState();
+        await expect(newPage).toHaveTitle("WebDriver | Datepicker");
+        return new DatepickerPage(newPage);
     }
 
     public async openMyCoursesPage() {
